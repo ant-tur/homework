@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import NBUService from './services/NBUService';
+
+function App({ uah }) {
+	const [value, setValue] = useState(uah);
+
+	const service = new NBUService();
+	const data = service.getFilterCurrency();
+
+	const dollar = () => {};
+
+	const euro = () => {};
+
+	const rub = () => {};
+
+	const reset = () => {
+		setValue(uah);
+	};
+
+	return (
+		<div className='app'>
+			<div className='counter'>{value}</div>
+			<div className='controls'>
+				<button onClick={dollar}>$</button>
+				<button onClick={euro}>€</button>
+				<button onClick={rub}>₽</button>
+				<button onClick={reset}>RESET</button>
+			</div>
+		</div>
+	);
 }
 
 export default App;
