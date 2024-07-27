@@ -16,7 +16,7 @@ class NBUService {
 		const res = await this.getResource(this._urlNBU);
 
 		return res.map(this._transformData).filter((data) => {
-			return data.name === 'USD' || data.name === 'EUR' || data.name === 'RUB';
+			return data.name === 'USD' || data.name === 'EUR' || data.name === 'GBP';
 		});
 	};
 
@@ -24,6 +24,7 @@ class NBUService {
 		return {
 			name: data.cc,
 			rate: data.rate,
+			date: data.exchangedate,
 		};
 	};
 }

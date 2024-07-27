@@ -4,4 +4,8 @@ import App from './App';
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App uah={1000} />);
+root.render(
+	<>
+		<App uah={1000} />
+	</>
+);
