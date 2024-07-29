@@ -9,13 +9,13 @@ function App({ uah }) {
 
 	const service = new NBUService();
 
-	const error = () => {
+	const errorServer = () => {
 		alert("Can't load data!");
 	};
 
 	useEffect(() => {
-		document.title = 'NBU Service';
-		service.getFilterCurrency().then(onDataLoaded).catch(error);
+		document.title = 'Exchange Service';
+		service.getFilterCurrency().then(onDataLoaded).catch(errorServer);
 	}, []);
 
 	const onDataLoaded = (data) => {
@@ -31,8 +31,8 @@ function App({ uah }) {
 		});
 	};
 
-	const reset = () => {
-		setValue(uah);
+	const resetExchanger = (value) => {
+		setValue(value);
 		setTransform(false);
 	};
 
@@ -49,7 +49,7 @@ function App({ uah }) {
 				<button onClick={handleClick} className='GBP'>
 					£
 				</button>
-				<button onClick={reset} className='reset'>
+				<button onClick={() => resetExchanger(uah)} className='reset'>
 					RESET
 				</button>
 			</div>
